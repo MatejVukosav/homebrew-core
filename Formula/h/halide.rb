@@ -1,10 +1,9 @@
 class Halide < Formula
   desc "Language for fast, portable data-parallel computation"
   homepage "https://halide-lang.org"
-  url "https://github.com/halide/Halide/archive/refs/tags/v18.0.0.tar.gz"
-  sha256 "1176b42a3e2374ab38555d9316c78e39b157044b5a8e765c748bf3afd2edb351"
+  url "https://github.com/halide/Halide/archive/refs/tags/v19.0.0.tar.gz"
+  sha256 "e8e6326dbd277f6e93af93ac3a32692b288cbdea5140dddfa10aca40c0826417"
   license "MIT"
-  revision 1
   head "https://github.com/halide/Halide.git", branch: "main"
 
   livecheck do
@@ -31,13 +30,13 @@ class Halide < Formula
   depends_on "llvm"
   depends_on "python@3.13"
 
-  # Check wabt version in `dependencies/wasm/CMakeLists.txt`.
+  # Check wabt version in `cmake/dependencies.cmake`.
   # TODO: Ask upstream to support usage of a system-provided wabt.
   # TODO: Do we really need a git checkout here?
   resource "wabt" do
     url "https://github.com/WebAssembly/wabt.git",
-        tag:      "1.0.33",
-        revision: "963f973469b45969ce198e0c86d3af316790a780"
+        tag:      "1.0.36",
+        revision: "3e826ecde1adfba5f88d10d361131405637e65a3"
   end
 
   def python3

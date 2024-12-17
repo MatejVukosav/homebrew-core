@@ -58,6 +58,9 @@ class MysqlClient < Formula
       #   "std::exception_ptr::__from_native_exception_pointer(void*)", referenced from:
       #       std::exception_ptr std::make_exception_ptr[abi:ne180100]<std::runtime_error>(std::runtime_error) ...
       ENV.prepend_path "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib/"c++"
+      # Work around error: a template argument list is expected after a name prefixed by the template keyword
+      ENV.append_to_cflags "-Wno-missing-template-arg-list-after-template-kw"
+      ENV.append_to_cflags "-stdlib=libc++"
     end
     # -DINSTALL_* are relative to `CMAKE_INSTALL_PREFIX` (`prefix`)
     args = %W[
